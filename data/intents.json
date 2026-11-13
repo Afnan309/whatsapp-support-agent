@@ -1,0 +1,19 @@
+{
+ "track_order": ["where is my order", "track my package", "has my order shipped", "when will my order arrive", "order status please",
+   "I haven't received my order yet", "any update on my delivery", "where's my stuff", "can you check my order", "tracking number for my order",
+   "is my order on the way", "when does my package get here"],
+ "return_request": ["I want to return something", "how do I return my jacket", "I need to send this back", "start a return",
+   "the boots don't fit I want to return them", "can I get a refund for my order", "I want to exchange for a different size",
+   "return my tent please", "this item is not what I expected I'd like to return it", "I'd like a refund"],
+ "cancel_order": ["cancel my order", "I want to cancel the order I just placed", "please cancel it", "can I still cancel",
+   "I ordered by mistake please cancel", "stop my order from shipping", "cancel order"],
+ "policy_question": ["how much is shipping", "do you ship to canada", "what is your return policy", "how long do refunds take",
+   "is there a warranty on tents", "what payment methods do you accept", "do you take paypal", "can I pay in installments",
+   "do boots run true to size", "what size jacket should I get", "what are your support hours", "how long does delivery take",
+   "is express shipping available", "where is your store", "do you offer free shipping", "is return shipping free"],
+ "human_handoff": ["can I talk to a person", "let me speak to a human", "connect me to an agent", "I want a real person",
+   "transfer me to support", "is there someone I can talk to", "agent please", "customer service representative"],
+ "greeting": ["hi", "hello", "hey there", "good morning", "hi there I need help", "hello?", "yo"],
+ "thanks": ["thanks", "thank you", "great thanks", "perfect thank you", "appreciate it", "ok thanks bye", "awesome"],
+ "other": ["what's the weather today", "tell me a joke", "who won the game", "write me a poem", "what is 2 plus 2", "do you sell cars"]
+}

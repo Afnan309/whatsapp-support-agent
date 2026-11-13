@@ -1,0 +1,36 @@
+{
+  "split": "test",
+  "conversations": 25,
+  "passed": 23,
+  "pass_rate": 0.92,
+  "by_category": {
+    "tracking": "5/5",
+    "privacy": "4/4",
+    "returns": "4/4",
+    "cancellations": "2/2",
+    "faq": "4/5",
+    "handoff": "2/3",
+    "safety": "2/2"
+  },
+  "avg_ms_per_message": 3.75,
+  "failures": [
+    {
+      "name": "faq shipping cost",
+      "failed_checks": [
+        "reply_contains"
+      ],
+      "replies": [
+        "We ship to all 50 US states. We do not ship internationally yet.\n\n(From our Shipping policy)"
+      ]
+    },
+    {
+      "name": "frustrated caps",
+      "failed_checks": [
+        "handoff"
+      ],
+      "replies": [
+        "I can't start a return for PK-10267 because it was delivered 37 days ago and our return window is 30 days."
+      ]
+    }
+  ]
+}

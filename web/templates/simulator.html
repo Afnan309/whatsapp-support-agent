@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phone simulator · WhatsApp assistant</title>
+<style>
+  *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif;background:linear-gradient(135deg,#0f2a20,#14532d);min-height:100vh;display:flex;align-items:center;justify-content:center;gap:60px;color:#fff}
+  .phone{width:390px;height:780px;background:#111;border-radius:48px;padding:14px;box-shadow:0 40px 80px rgba(0,0,0,.45)}
+  .screen{width:100%;height:100%;border-radius:36px;overflow:hidden;display:flex;flex-direction:column;background:#efeae2}
+  .bar{background:#075e54;color:#fff;padding:38px 16px 12px;display:flex;gap:10px;align-items:center}
+  .bar .av{width:36px;height:36px;border-radius:50%;background:#25d366;display:grid;place-items:center;font-weight:800}
+  .bar small{display:block;color:#cfe9e3;font-size:11.5px}
+  .msgs{flex:1;overflow:auto;padding:12px 10px}
+  .m{max-width:82%;padding:7px 10px 5px;border-radius:9px;margin-bottom:6px;font-size:13.5px;line-height:1.42;white-space:pre-wrap;color:#111b21;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+  .m.in{background:#fff;border-top-left-radius:2px}.m.out{background:#d9fdd3;margin-left:auto;border-top-right-radius:2px}
+  .btn{display:block;background:#fff;color:#027eb5;text-align:center;font-size:13.5px;padding:8px;border-radius:9px;margin:0 0 5px;max-width:82%;border:0;width:82%;font:inherit;cursor:pointer;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+  form{display:flex;gap:6px;padding:8px;background:#f0f2f5}form input{flex:1;border:0;border-radius:20px;padding:10px 14px;font:inherit}
+  form button{width:42px;border:0;border-radius:50%;background:#00a884;color:#fff;font-size:16px}
+  .copy h1{font-size:44px;line-height:1.05;margin:0 0 14px;max-width:440px}.copy p{color:#cfe9e3;font-size:17px;max-width:420px;line-height:1.5}
+  .copy code{background:rgba(255,255,255,.1);padding:2px 6px;border-radius:6px}
+</style>
+</head>
+<body>
+<div class="copy"><h1>Test the WhatsApp assistant</h1><p>Every message here is sent to the real <code>/webhook</code> endpoint in WhatsApp Cloud API format, exactly like Meta would send it.</p></div>
+<div class="phone"><div class="screen">
+  <div class="bar"><div class="av">P</div><div><b>Peakline Outdoor</b><small>Business account</small></div></div>
+  <div class="msgs" id="msgs"></div>
+  <form id="f"><input id="t" placeholder="Message" autocomplete="off"><button>➤</button></form>
+</div></div>
+<script>
+const phone="{{ phone }}";const box=document.getElementById('msgs');
+function bubble(t,cls){const d=document.createElement('div');d.className='m '+cls;d.textContent=t;box.appendChild(d);box.scrollTop=box.scrollHeight}
+async function send(text,button_id){bubble(text,'out');
+  const r=await fetch('/api/sim',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone,text,button_id})});const j=await r.json();
+  for(const rep of j.replies){bubble(rep.text,'in');for(const [id,title] of rep.buttons){const b=document.createElement('button');b.className='btn';b.textContent=title;b.onclick=()=>send(title,id);box.appendChild(b)}}
+  box.scrollTop=box.scrollHeight}
+document.getElementById('f').onsubmit=e=>{e.preventDefault();const i=document.getElementById('t');if(i.value.trim()){send(i.value.trim());i.value=''}};
+window.send=send;
+</script>
+</body>
+</html>

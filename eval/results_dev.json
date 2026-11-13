@@ -1,0 +1,17 @@
+{
+  "split": "dev",
+  "conversations": 16,
+  "passed": 16,
+  "pass_rate": 1.0,
+  "by_category": {
+    "tracking": "3/3",
+    "privacy": "2/2",
+    "returns": "3/3",
+    "cancellations": "2/2",
+    "faq": "2/2",
+    "handoff": "2/2",
+    "safety": "2/2"
+  },
+  "avg_ms_per_message": 6.22,
+  "failures": []
+}
